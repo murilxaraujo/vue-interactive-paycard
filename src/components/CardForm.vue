@@ -11,7 +11,7 @@
     </div>
     <div class="card-form__inner">
       <div class="card-input">
-        <label for="cardNumber" class="card-input__label">{{ $t('cardForm.cardNumber') }}</label>
+        <label for="cardNumber" class="card-input__label">Número do cartão</label>
         <input
           type="tel"
           :id="fields.cardNumber"
@@ -24,17 +24,9 @@
           data-card-field
           autocomplete="off"
         />
-        <button
-          class="card-input__eye"
-          :class="{ '-active' : !isCardNumberMasked }"
-          title="Show/Hide card number"
-          tabindex="-1"
-          :disabled="formData.cardNumber === ''"
-          @click="toggleMask"
-        ></button>
       </div>
       <div class="card-input">
-        <label for="cardName" class="card-input__label">{{ $t('cardForm.cardName') }}</label>
+        <label for="cardName" class="card-input__label">Nome do titular</label>
         <input
           type="text"
           :id="fields.cardName"
@@ -49,7 +41,7 @@
       <div class="card-form__row">
         <div class="card-form__col">
           <div class="card-form__group">
-            <label for="cardMonth" class="card-input__label">{{ $t('cardForm.expirationDate') }}</label>
+            <label for="cardMonth" class="card-input__label">Validade</label>
             <select
               class="card-input__input -select"
               :id="fields.cardMonth"
@@ -57,7 +49,7 @@
               @change="changeMonth"
               data-card-field
             >
-              <option value disabled selected>{{ $t('cardForm.month') }}</option>
+              <option value disabled selected>Mês</option>
               <option
                 v-bind:value="n < 10 ? '0' + n : n"
                 v-for="n in 12"
@@ -72,7 +64,7 @@
               @change="changeYear"
               data-card-field
             >
-              <option value disabled selected>{{ $t('cardForm.year') }}</option>
+              <option value disabled selected>Ano</option>
               <option
                 v-bind:value="$index + minCardYear"
                 v-for="(n, $index) in 12"
@@ -99,7 +91,7 @@
         </div>
       </div>
 
-      <button class="card-form__button" v-on:click="invaildCard">{{ $t('cardForm.submit') }}</button>
+      <button class="card-form__button">Enviar</button>
     </div>
   </div>
 </template>
@@ -253,11 +245,7 @@ export default {
       this.formData.cardNumberNotMask = this.formData.cardNumber
       this.mainCardNumber = this.formData.cardNumber
       let arr = this.formData.cardNumber.split('')
-      arr.forEach((element, index) => {
-        if (index > 4 && index < 14 && element.trim() !== '') {
-          arr[index] = '*'
-        }
-      })
+
       this.formData.cardNumber = arr.join('')
     },
     unMaskCardNumber () {

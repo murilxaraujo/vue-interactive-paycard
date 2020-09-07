@@ -55,7 +55,7 @@
         </label>
         <div class="card-item__content">
           <label :for="fields.cardName" class="card-item__info" :ref="fields.cardName">
-            <div class="card-item__holder">{{ $t('card.cardHolder') }}</div>
+            <div class="card-item__holder">Titular</div>
             <transition name="slide-fade-up">
               <div class="card-item__name" v-if="labels.cardName.length" key="1">
                 <transition-group name="slide-fade-right">
@@ -66,11 +66,11 @@
                   >{{n}}</span>
                 </transition-group>
               </div>
-              <div class="card-item__name" v-else key="2">{{ $t('card.fullName') }}</div>
+              <div class="card-item__name" v-else key="2">Nome completo</div>
             </transition>
           </label>
           <div class="card-item__date" ref="cardDate">
-            <label :for="fields.cardMonth" class="card-item__dateTitle">{{ $t('card.expires') }}</label>
+            <label :for="fields.cardMonth" class="card-item__dateTitle">Validade</label>
             <label :for="fields.cardMonth" class="card-item__dateItem">
               <transition name="slide-fade-up">
                 <span v-if="labels.cardMonth" :key="labels.cardMonth">{{labels.cardMonth}}</span>
