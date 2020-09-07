@@ -70,7 +70,7 @@
               if (error) {
                 alert('Erro com dados do cartão: '+error);
               } else {
-                window.location.replace('txtccpayment://data?token='+res.data.payment_token+'&mask='+res.data.card_mask+'&name='+cardHolderNameField.val());
+                window.location.replace('txtccpayment://data?token='+res.data.payment_token+'&mask='+res.data.card_mask+'&name='+$cardHolderNameField.val());
               }
             }
           );
